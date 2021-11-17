@@ -1,0 +1,6 @@
+D:\programavimas\Projektas\Zaidimukas\Butybe\bin\Debug\Butybe.dll
+D:\programavimas\Projektas\Zaidimukas\Butybe\bin\Debug\Butybe.pdb
+D:\programavimas\Projektas\Zaidimukas\Butybe\obj\Debug\Butybe.csproj.AssemblyReference.cache
+D:\programavimas\Projektas\Zaidimukas\Butybe\obj\Debug\Butybe.csproj.CoreCompileInputs.cache
+D:\programavimas\Projektas\Zaidimukas\Butybe\obj\Debug\Butybe.dll
+D:\programavimas\Projektas\Zaidimukas\Butybe\obj\Debug\Butybe.pdb

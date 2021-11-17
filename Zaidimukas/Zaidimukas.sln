@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vaizdas", "Vaizdas\Vaizdas.csproj", "{E68D115B-1204-4524-90D4-8041C14E1043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Butybe", "Butybe\Butybe.csproj", "{48CBE7F6-3839-4E91-8279-576973E1C8A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZaidimoVariklis", "ZaidimoVariklis\ZaidimoVariklis.csproj", "{2BE80661-8084-4815-A485-EF57C7F9789F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E68D115B-1204-4524-90D4-8041C14E1043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E68D115B-1204-4524-90D4-8041C14E1043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E68D115B-1204-4524-90D4-8041C14E1043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E68D115B-1204-4524-90D4-8041C14E1043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48CBE7F6-3839-4E91-8279-576973E1C8A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48CBE7F6-3839-4E91-8279-576973E1C8A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48CBE7F6-3839-4E91-8279-576973E1C8A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48CBE7F6-3839-4E91-8279-576973E1C8A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BE80661-8084-4815-A485-EF57C7F9789F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BE80661-8084-4815-A485-EF57C7F9789F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BE80661-8084-4815-A485-EF57C7F9789F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BE80661-8084-4815-A485-EF57C7F9789F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1A14B8E-2757-4D7C-838A-75C83C75ABD2}
+	EndGlobalSection
+EndGlobal

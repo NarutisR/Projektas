@@ -1,0 +1,9 @@
+D:\programavimas\Projektas\Zaidimukas\ZaidimoVariklis\obj\Debug\ZaidimoVariklis.csproj.AssemblyReference.cache
+D:\programavimas\Projektas\Zaidimukas\ZaidimoVariklis\obj\Debug\ZaidimoVariklis.csproj.CoreCompileInputs.cache
+D:\programavimas\Projektas\Zaidimukas\ZaidimoVariklis\bin\Debug\ZaidimoVariklis.dll
+D:\programavimas\Projektas\Zaidimukas\ZaidimoVariklis\bin\Debug\ZaidimoVariklis.pdb
+D:\programavimas\Projektas\Zaidimukas\ZaidimoVariklis\bin\Debug\Butybe.dll
+D:\programavimas\Projektas\Zaidimukas\ZaidimoVariklis\bin\Debug\Butybe.pdb
+D:\programavimas\Projektas\Zaidimukas\ZaidimoVariklis\obj\Debug\ZaidimoVariklis.csproj.CopyComplete
+D:\programavimas\Projektas\Zaidimukas\ZaidimoVariklis\obj\Debug\ZaidimoVariklis.dll
+D:\programavimas\Projektas\Zaidimukas\ZaidimoVariklis\obj\Debug\ZaidimoVariklis.pdb
