@@ -11,7 +11,7 @@ namespace ZaidimoVariklis
     public static class Objektai
     {
         public static List<Rectangle> Kryptis = new List<Rectangle>();
-        public static void SukurtiPriesus(Canvas zemelapis, double gyvybesTaskai, double jega, double judejimoGreitis)
+        public static void SukurtiPriesus(Canvas zemelapis, double gyvybesTaskai, double jega, double puolimoGreitis, double judejimoGreitis, double gyjimoLaikas)
         {
             int i = 0;
             foreach (Rectangle r in zemelapis.Children.OfType<Rectangle>())
@@ -19,7 +19,7 @@ namespace ZaidimoVariklis
                 if ((string)r.Tag == "Priesas")
                 {
                     Random rnd = new Random(i);
-                    Priesas.PriesuSarasasPriesas.Add(new Priesas(gyvybesTaskai, jega, judejimoGreitis));
+                    Priesas.PriesuSarasasPriesas.Add(new Priesas(gyvybesTaskai, jega,puolimoGreitis, judejimoGreitis, gyjimoLaikas));
                     Priesas.PriesuSarasasRectangle.Add(r);
                     Priesas.PriesuSarasasPriesas[i].Remas = new Rect(Canvas.GetLeft(r), Canvas.GetTop(r), r.Width, r.Height);
                     i++;

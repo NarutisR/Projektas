@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using System.Timers;
 using System.Windows.Threading;
+using System.Windows.Controls;
 using ZaidimoVariklis;
 
 namespace Vaizdas
@@ -11,16 +12,41 @@ namespace Vaizdas
     /// </summary>
     public partial class MainWindow : Window
     {
+        public bool Restart = false;
         private readonly Timer _time = new Timer(15);
         //private List<Rectangle> istrinimui = new List<Rectangle>();
         public MainWindow()
         {
             InitializeComponent();
-            Objektai.SukurtiPriesus(Zemelapis, 60, 5, 3);
+            NustatytiZaideja();
+            Objektai.SukurtiPriesus(Zemelapis, 60, 4, 30, 0.75, 80);
+            Ribos.SukurtiPriesoRadarus(Zemelapis);
+            Ribos.SukurtiPriesuPuolimoLaukus(Zemelapis);
             Ribos.SukurtiRibas(Zemelapis);
             Ribos.SukurtiPriesuRibasZaidejuiVienaKarta(Zemelapis);
-            Butybe.Zaidejas.Jega = 5;
+
             _time.Elapsed += (s, e) => ZaidimoLaikas();
+            _time.Start();
+            ZaidimoPradzia();
+        }
+
+        private void NustatytiZaideja()
+        {
+            Canvas.SetLeft(Zaidejas, 370);
+            Canvas.SetTop(Zaidejas, 270);
+            Koordinates.Thick.Left = 0;
+            Koordinates.Thick.Top = 0;
+            Zemelapis.Margin = Koordinates.Thick;
+            Butybe.Zaidejas.GyvybesTaskai = 150;
+            Butybe.Zaidejas.tempGyvybesTaskai = 150;
+            Butybe.Zaidejas.GyjimoLaikas = 60;
+            Butybe.Zaidejas.JudejimoGreitis = 2.5;
+            Butybe.Zaidejas.Jega = 15;
+            Butybe.Zaidejas.PuolimoLaikas = 20;
+        }
+        private void ZaidimoPradzia()
+        {
+            NustatytiZaideja();
             _time.Start();
         }
 
@@ -28,11 +54,23 @@ namespace Vaizdas
         {
             _ = Dispatcher.InvokeAsync(() =>
               {
+                  if(ZaidejoJudejimas.Restart == true)
+                  {
+                      _time.Stop();
+                      MessageBox.Show("Zaidimo Pabaiga.");
+                      //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                      //Application.Current.Shutdown();
+                      ZaidimoPradzia();
+                      ZaidejoJudejimas.Restart = false;
+                      
+                      
+                  }
                   PriesuJudejimas.Sw.Restart();
                   ZaidejoJudejimas.ZaidejasJuda(Zaidejas, Zemelapis, Kryptis);
                   PriesuJudejimas.PriesaiJuda(Zemelapis);
                   Tekstas.Content = $"x: {Koordinates.LeftZaidejas:0.0} y: {Koordinates.TopZaidejas:0.0} \n x :{Koordinates.Thick.Left:0.0} y :{Koordinates.Thick.Top:0.0}" +
-                  $"\n IKaire: {Koordinates.ZaidejoKryptisIKaire}\n IDesine: {Koordinates.ZaidejoKryptisIDesine}\n IVirsu: {Koordinates.ZaidejoKryptisIVirsu}\n IApacia: {Koordinates.ZaidejoKryptisIApacia}";
+                  $"\n IKaire: {Koordinates.ZaidejoKryptisIKaire}\n IDesine: {Koordinates.ZaidejoKryptisIDesine}\n IVirsu: {Koordinates.ZaidejoKryptisIVirsu}\n IApacia: {Koordinates.ZaidejoKryptisIApacia}" +
+                  $"\n Gyv. T.: {Butybe.Zaidejas.GyvybesTaskai}";
               });
         }
         private void Window_KeyDown(object sender, KeyEventArgs e)
