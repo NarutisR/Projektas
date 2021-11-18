@@ -39,6 +39,7 @@ namespace ZaidimoVariklis
         public static Rect ZaidejoIApacia;
 
         public static Rect KryptiesRibos;
+        public static Rect GinkloRibos;
 
         public static Thickness Thick = new Thickness(0, 0, 0, 0);
 

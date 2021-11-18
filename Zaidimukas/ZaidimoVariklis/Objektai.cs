@@ -10,7 +10,7 @@ namespace ZaidimoVariklis
 {
     public static class Objektai
     {
-        public static List<Rectangle> Kryptis = new List<Rectangle>();
+        //public static List<Rectangle> Kryptis = new List<Rectangle>();
         public static void SukurtiPriesus(Canvas zemelapis, double gyvybesTaskai, double jega, double puolimoGreitis, double judejimoGreitis, double gyjimoLaikas)
         {
             int i = 0;
@@ -26,5 +26,18 @@ namespace ZaidimoVariklis
                 }
             }
         }
+        //public static void KurtiGinkla(Canvas zemelapis)
+        //{
+        //    if ()
+        //    {
+        //        zemelapis.Children.Add(new Rectangle
+        //        {
+
+        //        });
+        //    }
+            
+        //}
     }
+
+    
 }

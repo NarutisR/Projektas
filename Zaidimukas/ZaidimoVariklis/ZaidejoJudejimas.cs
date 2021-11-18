@@ -53,18 +53,20 @@ namespace ZaidimoVariklis
             if (Pulti)
             {
                 Zaidejas.Pulti(Koordinates.KryptiesRibos);
+                KeistiKrypti(kryptis);
             }
             else if (Zaidejas.tempPuolimoLaikas != 0)
             {
                 Zaidejas.tempPuolimoLaikas--;
-                
+                KeistiKrypti(kryptis);
             }
             else
             {
+                Koordinates.Kryptis();
+                KeistiKrypti(kryptis);
                 Zaidejas.Gyti();
             }
-            Koordinates.Kryptis();
-            KeistiKrypti(kryptis);
+            
             Ribos.SukurtiZaidejoRibasPriesams(zaidejas);
             Koordinates.IDesine = true;
             Koordinates.IApacia = true;
@@ -74,7 +76,7 @@ namespace ZaidimoVariklis
 
         public static void KeistiKrypti(Rectangle krpts)
         {
-            Panel.SetZIndex(krpts, 3);
+            
             if (Koordinates.ZaidejoKryptisIVirsu && !Koordinates.ZaidejoKryptisIKaire && !Koordinates.ZaidejoKryptisIDesine)
             {
                 Canvas.SetLeft(krpts, Koordinates.LeftZaidejas + 15);
