@@ -9,9 +9,11 @@ namespace ZaidimoVariklis
 {
     public static class PriesuJudejimas
     {
-
         public static readonly Stopwatch Sw = new Stopwatch();
-
+        /// <summary>
+        /// Ir istrina susijusius objektus jei GyvybesTaskai < 0. 
+        /// </summary>
+        /// <param name="zemelapis">zemelapis</param>
         public static void PriesaiJuda(Canvas zemelapis)
         {
             for (int i = 0; i < Priesas.PriesuSarasasRectangle.Count;)
@@ -30,6 +32,8 @@ namespace ZaidimoVariklis
                     Koordinates.PriesoIDesine.RemoveAt(i);
                     Koordinates.PriesoIVirsu.RemoveAt(i);
                     Koordinates.PriesoIApacia.RemoveAt(i);
+                    Koordinates.PriesoRadarai.RemoveAt(i);
+                    Koordinates.PriesuPuolimoLaukai.RemoveAt(i);
                 }
             }
         }
@@ -40,32 +44,49 @@ namespace ZaidimoVariklis
         /// <param name="i">Kelintas sarase</param>
         private static void PriesasJuda(Rectangle priesas, int i)
         {
+
+            //tempPuolimoLaikas = Priesas.PriesuSarasasPriesas[i].PuolimoLaikas;
             Koordinates.LeftPriesas = Canvas.GetLeft(priesas);
             Koordinates.TopPriesas = Canvas.GetTop(priesas);
             Priesas.PriesuSarasasPriesas[i].Remas = new Rect(Koordinates.LeftPriesas, Koordinates.TopPriesas, priesas.Width, priesas.Height);
             Ribos.PatikrintiRibas(Priesas.PriesuSarasasPriesas[i].Remas, Koordinates.RibosIDesine, Koordinates.RibosIApacia, Koordinates.RibosIKaire, Koordinates.RibosIVirsu);
             Ribos.PatikrintiRibasSuZaideju(Priesas.PriesuSarasasPriesas[i].Remas);
-
+            Ribos.PatikrintiRadara(Koordinates.LeftPriesas, Koordinates.TopPriesas, i);
+            if (Priesas.PriesuSarasasPriesas[i].PriesoPuolimas)
+            {
+                Priesas.PriesuSarasasPriesas[i].tempJudejimoGreitis = Priesas.PriesuSarasasPriesas[i].JudejimoGreitis * 2.1;
+                if (Ribos.PatikrintiArPriesasPasiekiaPult(Koordinates.PriesuPuolimoLaukai[i]))
+                {
+                    Priesas.PriesuSarasasPriesas[i].Pulti();
+                }
+            }
+            else
+            {
+                Priesas.PriesuSarasasPriesas[i].Gyti();
+                Priesas.PriesuSarasasPriesas[i].tempJudejimoGreitis = Priesas.PriesuSarasasPriesas[i].JudejimoGreitis;
+                Priesas.PriesuSarasasPriesas[i].tempPuolimoLaikas = Priesas.PriesuSarasasPriesas[i].PuolimoLaikas;
+            }
+            
             if (Priesas.PriesuSarasasPriesas[i].JudejimoLaikas > 0)
             {
-                if (Priesas.PriesuSarasasPriesas[i].goLeft && Koordinates.IKaire && Koordinates.LeftPriesas > 8 + (Priesas.PriesuSarasasPriesas[i].JudejimoGreitis / 2))
+                if (Priesas.PriesuSarasasPriesas[i].goLeft && Koordinates.IKaire && Koordinates.LeftPriesas > 8 + (Priesas.PriesuSarasasPriesas[i].tempJudejimoGreitis / 2))
                 {
-                    Canvas.SetLeft(priesas, Koordinates.LeftPriesas - Priesas.PriesuSarasasPriesas[i].JudejimoGreitis);
+                    Canvas.SetLeft(priesas, Koordinates.LeftPriesas - Priesas.PriesuSarasasPriesas[i].tempJudejimoGreitis);
                     Priesas.PriesuSarasasPriesas[i].JudejimoLaikas -= 1;
                 }
-                if (Priesas.PriesuSarasasPriesas[i].goRight && Koordinates.IDesine && Koordinates.LeftPriesas < 4955 + (Priesas.PriesuSarasasPriesas[i].JudejimoGreitis / 2))
+                if (Priesas.PriesuSarasasPriesas[i].goRight && Koordinates.IDesine && Koordinates.LeftPriesas < 4955 + (Priesas.PriesuSarasasPriesas[i].tempJudejimoGreitis / 2))
                 {
-                    Canvas.SetLeft(priesas, Koordinates.LeftPriesas + Priesas.PriesuSarasasPriesas[i].JudejimoGreitis);
+                    Canvas.SetLeft(priesas, Koordinates.LeftPriesas + Priesas.PriesuSarasasPriesas[i].tempJudejimoGreitis);
                     Priesas.PriesuSarasasPriesas[i].JudejimoLaikas -= 1;
                 }
-                if (Priesas.PriesuSarasasPriesas[i].goTop && Koordinates.IVirsu && Koordinates.TopPriesas > 8 + (Priesas.PriesuSarasasPriesas[i].JudejimoGreitis / 2))
+                if (Priesas.PriesuSarasasPriesas[i].goTop && Koordinates.IVirsu && Koordinates.TopPriesas > 8 + (Priesas.PriesuSarasasPriesas[i].tempJudejimoGreitis / 2))
                 {
-                    Canvas.SetTop(priesas, Koordinates.TopPriesas - Priesas.PriesuSarasasPriesas[i].JudejimoGreitis);
+                    Canvas.SetTop(priesas, Koordinates.TopPriesas - Priesas.PriesuSarasasPriesas[i].tempJudejimoGreitis);
                     Priesas.PriesuSarasasPriesas[i].JudejimoLaikas -= 1;
                 }
-                if (Priesas.PriesuSarasasPriesas[i].goBottom && Koordinates.IApacia && Koordinates.TopPriesas < 4955 + (Priesas.PriesuSarasasPriesas[i].JudejimoGreitis / 2))
+                if (Priesas.PriesuSarasasPriesas[i].goBottom && Koordinates.IApacia && Koordinates.TopPriesas < 4955 + (Priesas.PriesuSarasasPriesas[i].tempJudejimoGreitis / 2))
                 {
-                    Canvas.SetTop(priesas, Koordinates.TopPriesas + Priesas.PriesuSarasasPriesas[i].JudejimoGreitis);
+                    Canvas.SetTop(priesas, Koordinates.TopPriesas + Priesas.PriesuSarasasPriesas[i].tempJudejimoGreitis);
                     Priesas.PriesuSarasasPriesas[i].JudejimoLaikas -= 1;
                 }
                 if (!Priesas.PriesuSarasasPriesas[i].goLeft && !Priesas.PriesuSarasasPriesas[i].goRight && !Priesas.PriesuSarasasPriesas[i].goTop && !Priesas.PriesuSarasasPriesas[i].goBottom)
@@ -78,7 +99,10 @@ namespace ZaidimoVariklis
             {
                 SugeneruotKryptiLaika(Priesas.PriesuSarasasPriesas[i], i);
             }
+            Ribos.SukurtiPriesoPuolimoLauka(Koordinates.LeftPriesas, Koordinates.TopPriesas, i);
+            Ribos.SukurtiPriesoRadara(Koordinates.LeftPriesas, Koordinates.TopPriesas, i);
             Ribos.SukurtiPriesuRibasZaidejui(Koordinates.LeftPriesas, Koordinates.TopPriesas, priesas.Width, priesas.Height, i);
+            Priesas.PriesuSarasasPriesas[i].PriesoPuolimas = false;
             Koordinates.IDesine = true;
             Koordinates.IApacia = true;
             Koordinates.IKaire = true;
@@ -88,7 +112,7 @@ namespace ZaidimoVariklis
         {
             Random rnd = new Random((int)Sw.ElapsedTicks + i);
             p.JudejimoLaikas = rnd.Next(15, 80);
-            int @case = rnd.Next(0, 9);
+            int @case = rnd.Next(0, 15);
             switch (@case)
             {
                 case 0:

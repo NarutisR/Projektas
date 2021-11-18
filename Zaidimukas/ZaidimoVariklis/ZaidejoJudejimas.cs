@@ -9,11 +9,16 @@ namespace ZaidimoVariklis
 {
     public static class ZaidejoJudejimas
     {
+        public static bool Restart = false;
         public static bool Pulti;
-        public static double JudejimoGreitis = 2.5;
+        public static double JudejimoGreitis = Zaidejas.JudejimoGreitis;
 
         public static void ZaidejasJuda(Ellipse zaidejas, Canvas zemelapis, Rectangle kryptis)
         {
+            if(Zaidejas.GyvybesTaskai <= 0)
+            {
+                Restart = true;
+            }
             Koordinates.LeftZaidejas = Canvas.GetLeft(zaidejas);
             Koordinates.TopZaidejas = Canvas.GetTop(zaidejas);
             Koordinates.ZaidejoRibos = new Rect(Koordinates.LeftZaidejas, Koordinates.TopZaidejas, zaidejas.Width, zaidejas.Height);
@@ -48,6 +53,15 @@ namespace ZaidimoVariklis
             if (Pulti)
             {
                 Zaidejas.Pulti(Koordinates.KryptiesRibos);
+            }
+            else if (Zaidejas.tempPuolimoLaikas != 0)
+            {
+                Zaidejas.tempPuolimoLaikas--;
+                
+            }
+            else
+            {
+                Zaidejas.Gyti();
             }
             Koordinates.Kryptis();
             KeistiKrypti(kryptis);

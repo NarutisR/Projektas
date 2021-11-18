@@ -6,6 +6,8 @@ namespace ZaidimoVariklis
     public struct Koordinates
     {
         public static bool GoLeft, GoRight, GoTop, GoBottom;
+        
+        public static bool GoLeftPriesas, GoRightPriesas, GoTopPriesas, GoBottomPriesas;
 
         public static List<Rect> RibosIDesine = new List<Rect>();
         public static List<Rect> RibosIApacia = new List<Rect>();
@@ -16,6 +18,9 @@ namespace ZaidimoVariklis
         public static List<Rect> PriesoIDesine = new List<Rect>();
         public static List<Rect> PriesoIVirsu = new List<Rect>();
         public static List<Rect> PriesoIApacia = new List<Rect>();
+
+        public static List<Rect> PriesoRadarai = new List<Rect>();
+        public static List<Rect> PriesuPuolimoLaukai = new List<Rect>();
 
         public static double LeftZaidejas, TopZaidejas;
         public static double LeftPriesas, TopPriesas;

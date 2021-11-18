@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 using System.Windows;
+using Butybe;
 
 
 namespace ZaidimoVariklis
@@ -48,6 +49,57 @@ namespace ZaidimoVariklis
                     Koordinates.PriesoIVirsu.Add(new Rect(Canvas.GetLeft(r), Canvas.GetTop(r) + r.Height, 40, 10));
                     Koordinates.PriesoIApacia.Add(new Rect(Canvas.GetLeft(r), Canvas.GetTop(r) - 10, 40, 10));
                 }
+            }
+        }
+
+        public static void SukurtiPriesoRadara(double leftPriesas, double topPriesas, int i)
+        {
+            Koordinates.PriesoRadarai[i] = new Rect(leftPriesas - 130, topPriesas - 130, 300, 300);
+        }
+
+        public static void SukurtiPriesoRadarus(Canvas zemelapis)
+        {
+            foreach(Rectangle r in zemelapis.Children.OfType<Rectangle>())
+            {
+                if ((string)r.Tag == "Priesas")
+                {
+                    Koordinates.PriesoRadarai.Add(new Rect(Canvas.GetLeft(r) - 130, Canvas.GetTop(r) - 130, 300, 300));
+                }
+            }
+        }
+        public static void SukurtiPriesoPuolimoLauka(double leftPriesas, double topPriesas, int i)
+        {
+            Koordinates.PriesuPuolimoLaukai[i] = new Rect(leftPriesas - 15, topPriesas - 15, 70, 70);
+        }
+        public static void SukurtiPriesuPuolimoLaukus(Canvas zemelapis)
+        {
+            foreach (var r in zemelapis.Children.OfType<Rectangle>())
+            {
+                if ((string)r.Tag == "Priesas")
+                {
+                    Koordinates.PriesuPuolimoLaukai.Add(new Rect(Canvas.GetLeft(r) - 15, Canvas.GetTop(r) - 15, r.Width + 30, r.Height + 30));
+                }
+            }
+        }
+        public static bool PatikrintiArPriesasPasiekiaPult(Rect priesoLaukas)
+        {
+            if (priesoLaukas.IntersectsWith(Koordinates.ZaidejoRibos))
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        public static void PatikrintiRadara(double leftPriesas, double topPriesas, int i)
+        {
+            if (Koordinates.PriesoRadarai[i].IntersectsWith(Koordinates.ZaidejoRibos))
+            {
+                Priesas.PriesuSarasasPriesas[i].goLeft = Koordinates.LeftZaidejas - leftPriesas > 0 ? false : true;
+                Priesas.PriesuSarasasPriesas[i].goRight = Koordinates.LeftZaidejas - leftPriesas > 0 ? true : false;
+                Priesas.PriesuSarasasPriesas[i].goTop = Koordinates.TopZaidejas - topPriesas > 0 ? false : true;
+                Priesas.PriesuSarasasPriesas[i].goBottom = Koordinates.TopZaidejas - topPriesas > 0 ? true : false;
+                Priesas.PriesuSarasasPriesas[i].JudejimoLaikas = 10;
+                Priesas.PriesuSarasasPriesas[i].PriesoPuolimas = true;
             }
         }
         public static void PatikrintiRibas(Rect remas, List<Rect> IDesine, List<Rect> IApacia, List<Rect> IKaire, List<Rect> IVirsu)
