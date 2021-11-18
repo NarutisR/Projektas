@@ -14,7 +14,7 @@ namespace Vaizdas
     {
         public bool Restart = false;
         private readonly Timer _time = new Timer(15);
-        //private List<Rectangle> istrinimui = new List<Rectangle>();
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace Vaizdas
 
             _time.Elapsed += (s, e) => ZaidimoLaikas();
             _time.Start();
-            ZaidimoPradzia();
+            
         }
 
         private void NustatytiZaideja()
@@ -39,7 +39,7 @@ namespace Vaizdas
             Zemelapis.Margin = Koordinates.Thick;
             Butybe.Zaidejas.GyvybesTaskai = 150;
             Butybe.Zaidejas.tempGyvybesTaskai = 150;
-            Butybe.Zaidejas.GyjimoLaikas = 60;
+            Butybe.Zaidejas.GyjimoLaikas = 90;
             Butybe.Zaidejas.JudejimoGreitis = 2.5;
             Butybe.Zaidejas.Jega = 15;
             Butybe.Zaidejas.PuolimoLaikas = 20;
@@ -58,12 +58,8 @@ namespace Vaizdas
                   {
                       _time.Stop();
                       MessageBox.Show("Zaidimo Pabaiga.");
-                      //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-                      //Application.Current.Shutdown();
                       ZaidimoPradzia();
                       ZaidejoJudejimas.Restart = false;
-                      
-                      
                   }
                   PriesuJudejimas.Sw.Restart();
                   ZaidejoJudejimas.ZaidejasJuda(Zaidejas, Zemelapis, Kryptis);

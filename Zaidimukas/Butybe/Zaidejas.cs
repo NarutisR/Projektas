@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 
+
 namespace Butybe
 {
     public static class Zaidejas
@@ -13,6 +14,7 @@ namespace Butybe
         public static double tempGyjimoLaikas { get; set; }
         public static double JudejimoGreitis { get; set; }
 
+        public static bool GinklasSukurtas = false;
         public static void Pulti(Rect Remas)
         {
             foreach (Priesas p in Priesas.PriesuSarasasPriesas)
@@ -31,7 +33,7 @@ namespace Butybe
                     else
                     {
                         tempPuolimoLaikas--;
-                    }                        
+                    }
                 }
             }
         }

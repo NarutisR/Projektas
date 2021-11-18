@@ -10,7 +10,7 @@
         Title="Zaidimukas">
     <Grid Background="Aqua">
         <Label Name="Tekstas" VerticalAlignment="Top" HorizontalAlignment="Left" Panel.ZIndex="4"/>
-        <!--<Viewbox Width="800" Height="600" Stretch="None">-->
+        <Viewbox Width="800" Height="600" Stretch="None" Margin="50 50 50 50">
 
         <Canvas Name ="Zemelapis" Width="6000" Height="6000" Panel.ZIndex="2" >
 
@@ -60,7 +60,7 @@
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="208"  Stroke="Black" VerticalAlignment="Top" Width="100" Canvas.Left="507" Canvas.Top="641" Tag="Siena"/>
 
         </Canvas>
-        <!--</Viewbox>-->
+        </Viewbox>
 
 
     </Grid>
